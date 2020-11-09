@@ -4,45 +4,81 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Homework2
+namespace Homework3
 {
+    class Answer
+    {
+        public void Answer1()
+        {
+            Complex first = new Complex();
+            Complex second = new Complex();
+            Complex result = new Complex();
+
+            first.imaginary = 30;
+            second.imaginary = 4;
+            first.real = 2;
+            second.real = 2;
+
+            Console.WriteLine(string.Format("Answer1\n"));
+
+            result = first.Multi(second);
+            Console.WriteLine($"{result.imaginary} , {result.real} (Multi)\n------------");
+
+            result = first.Division(second);
+            Console.WriteLine($"{result.imaginary} , {result.real} (Division)\n------------");
+
+            result = first.Subtraction(second);
+            Console.WriteLine($"{result.imaginary} , {result.real} (Subtraction)\n------------");
+
+            result = first.Summ(second);
+            Console.WriteLine($"{result.imaginary} , {result.real} (Summ)\n------------");
+        }
+
+        public void Answer2()
+        {
+            Console.WriteLine("\n\nAnswer 2\n");
+            Homework3 test2 = new Homework3();
+            Console.WriteLine($"Пожалуйста, введите числа, чтобы посчитать суммы нечетных положительных чисел. \nДля остановки программы напишите 0.\n");
+            test2.summOddNumber();
+        }
+
+        public void Answer3()
+        {
+            Console.WriteLine("\n\nAnswer 3\n");
+
+            Double test = new Double(), test2 = new Double();
+            
+            Console.WriteLine("Введите числитель и знаменатель 1й дроби:");
+            test.numerator = Convert.ToInt32(Console.ReadLine());
+            test.denominator = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите числитель и знаменатель 2й дроби:");
+            test2.numerator = Convert.ToInt32(Console.ReadLine());
+            test2.denominator = Convert.ToInt32(Console.ReadLine());
+
+            if (test.denominator == 0 || test2.denominator == 0)
+            {
+                Console.WriteLine("Вы ввели знаменталь = 0!");
+            }
+            else
+            {
+                Console.WriteLine($"{test.Summ(test2)} - сумма дробей \n{test.Subtraction(test2)} - разность дробей \n{test.Multi(test2)} - перемножение дробей \n{test.Division(test2)} - деление дробей");
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-
-            classHomework test = new classHomework();
-            Console.ForegroundColor = ConsoleColor.Red;
+            Answer test = new Answer();
             
 
-            if (test.password())
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                test.Print("\nЗадача 1\nНайти минимальное число из 3х:");
-                test.Print(test.countMin(16, 5, 9));
-                    test.Pause();
-                test.Print("\nЗадача 2\nПосчитать количество цифр в числе:");
-                test.Print(test.countNumber(358));
-                    test.Pause();
-                test.Print("\nЗадача 3");
-                test.summOddNumber();
-                    test.Pause();
-                test.Print("\nЗадача 5");
-                test.sportBody();
-                    test.Pause();
-                test.Print("\nЗадача 6");
-                test.Print("Идет загрузка. Примерное время для обработки 1 млрд. составляет 78 сек.");
-                test.goodNumbers(100);
-                    test.Pause();
-                test.Print("\nЗадача 7");
-                test.recurseCountNumber(2, 10);
-                test.Print("\nСумма чисел:");
-                test.recurseSumm(2, 10, 0);
-                    test.Pause();
-            }
-            Console.ForegroundColor = ConsoleColor.Green;
-            test.Print("\n\nЗадание выполнил студент GeekBrains, Нахаев Олег\n");
-            test.Pause();
+            
+            test.Answer1();
+            test.Answer2();
+            test.Answer3();
+            Console.ReadKey();
         }
     }
 }
