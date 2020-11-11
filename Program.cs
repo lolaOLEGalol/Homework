@@ -62,8 +62,24 @@ namespace Homework3
             }
             else
             {
-                Console.WriteLine($"{test.Summ(test2)} - сумма дробей \n{test.Subtraction(test2)} - разность дробей \n{test.Multi(test2)} - перемножение дробей \n{test.Division(test2)} - деление дробей");
+                Console.WriteLine($"{test.Summ(test2):0.00} - сумма дробей \n{test.Subtraction(test2):0.00} - разность дробей \n{test.Multi(test2):0.00} - перемножение дробей \n{test.Division(test2):0.00} - деление дробей");
             }
+        }
+
+        public void Answer3Fixed()
+        {
+            DoubleFixed test = new DoubleFixed();
+            DoubleFixed test2 = new DoubleFixed();
+
+            Console.WriteLine("\nВведите числитель и знаменатель 1й дроби:");
+            test.numerator = Convert.ToInt32(Console.ReadLine());
+            test.denominator = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите числитель и знаменатель 2й дроби:");
+            test2.numerator = Convert.ToInt32(Console.ReadLine());
+            test2.denominator = Convert.ToInt32(Console.ReadLine());
+
+            test.Summ(test2); test.Subtraction(test2); test.Division(test2); test.Multi(test2);
         }
     }
 
@@ -72,12 +88,12 @@ namespace Homework3
         static void Main(string[] args)
         {
             Answer test = new Answer();
-            
 
-            
             test.Answer1();
             test.Answer2();
             test.Answer3();
+            test.Answer3Fixed();
+
             Console.ReadKey();
         }
     }

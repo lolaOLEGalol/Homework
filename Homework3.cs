@@ -76,11 +76,10 @@ namespace Homework3
             Console.WriteLine($"Сумма нечетных положительных чисел = {summ}");
         }
     }
-
     class Double
     {
-        public int numerator; //числитель
-        public int denominator; // знаменатель
+        public double numerator; //числитель
+        public double denominator; // знаменатель
 
         public double Summ(Double other)
         {
@@ -100,6 +99,32 @@ namespace Homework3
         public double Division(Double other)
         {
             return (numerator / denominator) / (other.numerator / other.denominator);
+        }
+    }
+
+    class DoubleFixed
+    {
+        public int numerator; 
+        public int denominator;
+
+        public void Summ(DoubleFixed other)
+        {
+            Console.WriteLine($"{numerator*other.denominator + other.numerator*denominator} | {denominator*other.denominator}");
+        }
+
+        public void Subtraction(DoubleFixed other)
+        {
+            Console.WriteLine($"{numerator * other.denominator - other.numerator * denominator} | {denominator * other.denominator}");
+        }
+
+        public void Multi(DoubleFixed other)
+        {
+            Console.WriteLine($"{numerator*other.numerator} | {denominator*other.denominator}");
+        }
+
+        public void Division(DoubleFixed other)
+        {
+            Console.WriteLine($"{numerator*other.denominator} | {denominator*other.numerator}");
         }
     }
    
