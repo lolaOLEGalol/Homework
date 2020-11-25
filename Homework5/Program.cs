@@ -14,7 +14,11 @@ namespace Homework5
             Console.WriteLine("\n  Answer1\n");
 
             Homework tw = new Homework();
-            if (tw.CheckLogin("d123"))
+
+            Console.WriteLine("Напишите ваш логин: ");
+            string login = Console.ReadLine();
+
+            if (tw.CheckLogin(login))
                 Console.WriteLine("Ваш логин соответствует требованиям!");
             else
                 Console.WriteLine("Ваш логин не соответствует требованиям!");
@@ -104,20 +108,86 @@ namespace Homework5
             text2 = Console.ReadLine();
             g.String(text1, text2);
         }
+
+        public void Answer4()
+        {
+            Console.WriteLine("  Answer5 \n");
+            Console.WriteLine("Введите количество учеников: (не меньше 10 и  не больше 100)");
+            int n = Convert.ToInt32(Console.ReadLine());
+            string student;
+
+            double min = 5;
+            School_97[] students = new School_97[n];
+
+            if (n > 0 && n < 100)
+            {
+
+                for (int i = 0; i < n; i++)
+                {
+                    Console.WriteLine("Вводите: ");
+                    student = Console.ReadLine();
+                    string[] arrSplit = student.Split(' ');
+
+                    while (Convert.ToInt32(arrSplit[2]) < 1 || Convert.ToInt32(arrSplit[2]) > 5 || Convert.ToInt32(arrSplit[3]) < 1 || Convert.ToInt32(arrSplit[3]) > 5 || Convert.ToInt32(arrSplit[4]) < 1 || Convert.ToInt32(arrSplit[4]) > 5)
+                    {
+                        Console.WriteLine("Введите ученика еще раз с корректными оценками!");
+                        student = Console.ReadLine();
+                        arrSplit = student.Split(' ');
+                    }
+
+                    students[i] = new School_97(arrSplit[0], arrSplit[1], Convert.ToInt32(arrSplit[2]), Convert.ToInt32(arrSplit[3]), Convert.ToInt32(arrSplit[4]));
+                }
+
+                Program.Sort(n, ref students);
+
+                for (int i = 0; i < n - 1; i++)
+                {
+                    if (i < 3 || (students[2].AVG() == students[i + 1].AVG()))
+                    {
+                        students[i].Print();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Вы не правы!");
+            }
+        }
+
+        public void Answer5()
+        {
+            Console.WriteLine("  Answer5\n");
+            HomeWork5 test2 = new HomeWork5();
+            test2.ReadFile("TrueOrFalse.txt");
+        }
     }
     class Program
     {
+        static public void Sort(int SIZE, ref School_97[] first)
+        {
+            for (int i = 0; i < SIZE - 1; i++)
+            {
+                for (int j = 0; j < SIZE - 1; j++)
+                {
+                    if (first[j].AVG() > first[j + 1].AVG())
+                    {
+                        School_97 temp = first[j];
+                        first[j] = first[j + 1];
+                        first[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
              Answer test = new Answer();
 
-            //test.Answer1B();
-            //test.Answer2();
-
-            //test.Answer3();
-
-            Permutation asd = new Permutation();
-            asd.String("abc", "abc");
+            test.Answer1A();
+            test.Answer2();
+            test.Answer3();
+            test.Answer4();
+            test.Answer5();
 
             Console.ReadKey();
         }
